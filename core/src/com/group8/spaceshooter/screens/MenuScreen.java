@@ -4,13 +4,13 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.group8.spaceshooter.SpaceShooter;
 
-public class GameScreen implements Screen {
+public class MenuScreen implements Screen {
     private final SpaceShooter game;
 
     // GameScreen camera
     private static OrthographicCamera camera;
 
-    public GameScreen(SpaceShooter game) {
+    public MenuScreen(SpaceShooter game) {
         this.game = game;
 
         // Initialize camera & Set the width & height to the game dimensions
@@ -23,7 +23,7 @@ public class GameScreen implements Screen {
         // Update the camera
         camera.update();
 
-        // Render stuff on GameScreen
+        // Render stuff on MenuScreen
         this.game.batch.setProjectionMatrix(camera.combined);
         this.game.batch.begin();
         this.game.batch.end();

@@ -3,10 +3,9 @@ package com.group8.spaceshooter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.group8.spaceshooter.screens.GameScreen;
+import com.group8.spaceshooter.screens.MenuScreen;
 
 public class SpaceShooter extends Game implements ApplicationListener {
 	// Game Dimension
@@ -24,8 +23,8 @@ public class SpaceShooter extends Game implements ApplicationListener {
 		// Initialized SpriteBatch
 		batch = new SpriteBatch();
 
-		// Set the screen to the GameScreen
-		this.setScreen(new GameScreen(this));
+		// Set the screen to the MenuScreen
+		this.setScreen(new MenuScreen(this));
 	}
 
 	@Override
