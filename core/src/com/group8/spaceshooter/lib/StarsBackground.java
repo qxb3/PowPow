@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class StarsBackground {
+    private final SpaceShooter game;
+
     // Stars Background
     private static ArrayList<Rectangle> stars;
     private static long lastStar;
-    private final SpaceShooter game;
 
     public StarsBackground(SpaceShooter game) {
         this.game = game;
