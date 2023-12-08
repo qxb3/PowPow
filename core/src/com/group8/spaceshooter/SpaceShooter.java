@@ -59,12 +59,12 @@ public class SpaceShooter extends SpaceShooterGame implements ApplicationListene
 		// Update stars
 		starsBackground.update();
 
-		batch.setProjectionMatrix(camera.combined);
-		shapeRenderer.setProjectionMatrix(camera.combined);
-		shapeRenderer.setColor(Color.WHITE);
+		batch.setProjectionMatrix(camera.combined); // Set the Sprite renderer align to camera
+		shapeRenderer.setProjectionMatrix(camera.combined); // Set the Shape renderer align to camera
+		shapeRenderer.setColor(Color.WHITE); // Set the Shape renderer Color
 
-		batch.begin();
-		shapeRenderer.begin(ShapeType.Filled);
+		batch.begin(); // Begin sprite renderer
+		shapeRenderer.begin(ShapeType.Filled); // Begin Shape renderer
 
 		// Render stars
 		starsBackground.render();
@@ -72,8 +72,8 @@ public class SpaceShooter extends SpaceShooterGame implements ApplicationListene
 		// Render the current screen
 		super.render();
 
-		shapeRenderer.end();
-		batch.end();
+		shapeRenderer.end(); // End Shape renderer
+		batch.end(); // End Sprite renderer
 	}
 
 	@Override
