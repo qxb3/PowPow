@@ -1,30 +1,48 @@
 package com.group8.spaceshooter;
 
 import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.group8.spaceshooter.screens.MenuScreen;
+import com.group8.spaceshooter.lib.SpaceShooterGame;
+import com.group8.spaceshooter.lib.StarsBackground;
+import com.group8.spaceshooter.screens.GameScreen;
 
-public class SpaceShooter extends Game implements ApplicationListener {
+public class SpaceShooter extends SpaceShooterGame implements ApplicationListener {
 	// Game Dimension
 	public static final float GAME_WIDTH = 400;
 	public static final float GAME_HEIGHT = 600;
 
-	// Spritebatch for our game, This is used to draw stuff on the screen
+	// Our Renderers that will be used throughout the game
 	public SpriteBatch batch;
+	public ShapeRenderer shapeRenderer;
+
+	// The camera that will be used throughout the game
+	public OrthographicCamera camera;
+
+	private static StarsBackground starsBackground;
 
 	@Override
 	public void create() {
 		// Set the window to our game dimensions
 		Gdx.graphics.setWindowedMode((int) GAME_WIDTH, (int) GAME_HEIGHT);
 
-		// Initialized SpriteBatch
+		// Initialize SpriteBatch & shapeRenderer
 		batch = new SpriteBatch();
+		shapeRenderer = new ShapeRenderer();
+
+		// Initialize camera & Set the width & height to the game dimensions
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, (int) SpaceShooter.GAME_WIDTH, (int) SpaceShooter.GAME_HEIGHT);
+
+		starsBackground = new StarsBackground(this);
 
 		// Set the screen to the MenuScreen
-		this.setScreen(new MenuScreen(this));
+		this.setScreen(new GameScreen(this));
 	}
 
 	@Override
@@ -32,13 +50,37 @@ public class SpaceShooter extends Game implements ApplicationListener {
 		// Clear the background to black
 		ScreenUtils.clear(0, 0, 0, 1);
 
-		// Render Screens
+		// Update the camera
+		camera.update();
+
+		// Update the current screen
+		this.screen.update();
+
+		// Update stars
+		starsBackground.update();
+
+		batch.setProjectionMatrix(camera.combined);
+		shapeRenderer.setProjectionMatrix(camera.combined);
+		shapeRenderer.setColor(Color.WHITE);
+
+		batch.begin();
+		shapeRenderer.begin(ShapeType.Filled);
+
+		// Render stars
+		starsBackground.render();
+
+		// Render the current screen
 		super.render();
+
+		shapeRenderer.end();
+		batch.end();
 	}
-	
+
 	@Override
 	public void dispose() {
 		// Dispose assets to avoid memory leaks
 		batch.dispose();
+		shapeRenderer.dispose();
+		this.screen.dispose();
 	}
 }
