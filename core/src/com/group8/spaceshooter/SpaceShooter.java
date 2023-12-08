@@ -54,7 +54,7 @@ public class SpaceShooter extends SpaceShooterGame implements ApplicationListene
 		camera.update();
 
 		// Update the current screen
-		this.screen.update();
+		this.screen.update(Gdx.graphics.getDeltaTime());
 
 		// Update stars
 		starsBackground.update();

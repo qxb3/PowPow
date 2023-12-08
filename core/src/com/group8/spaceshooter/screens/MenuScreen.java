@@ -19,7 +19,7 @@ public class MenuScreen implements SpaceShooterScreen {
     }
 
     @Override
-    public void update() {}
+    public void update(float delta) {}
 
     @Override
     public void render(float delta) {

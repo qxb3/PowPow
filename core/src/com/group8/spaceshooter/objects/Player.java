@@ -1,20 +1,21 @@
 package com.group8.spaceshooter.objects;
 
 import com.group8.spaceshooter.SpaceShooter;
+import com.group8.spaceshooter.lib.SpaceShooterObject;
 
-public class Player {
+public class Player implements  SpaceShooterObject {
     private final SpaceShooter game;
 
     public Player(SpaceShooter game) {
         this.game = game;
     }
 
-    // Update stuff for the player
+    @Override
     public void update() {}
 
-    // Render player stuff
+    @Override
     public void render() {}
 
-    // Dispose player assets
+    @Override
     public void dispose() {}
 }
