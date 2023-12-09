@@ -17,13 +17,16 @@ public class GameScreen implements SpaceShooterScreen {
 
     @Override
     public void update(float delta) {
-        player.update();
+        player.update(delta);
     }
 
     @Override
     public void render(float delta) {
-        player.render();
+        player.render(delta);
     }
+
+    @Override
+    public void renderShape(float delta) {}
 
     @Override
     public void dispose() {}

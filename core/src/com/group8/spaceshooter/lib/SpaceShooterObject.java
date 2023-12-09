@@ -1,7 +1,8 @@
 package com.group8.spaceshooter.lib;
 
 public interface SpaceShooterObject {
-    void update();
-    void render();
+    void update(float delta);
+    void render(float delta);
+    void renderShape(float delta);
     void dispose();
 }

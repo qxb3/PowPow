@@ -16,18 +16,21 @@ public class Player implements  SpaceShooterObject {
         this.game = game;
 
         sprite = new Sprite(new Texture("badlogic.jpg"));
-        sprite.setSize(17, 16);
+        sprite.setSize(32, 32);
 
-        position = new Vector2(SpaceShooter.GAME_WIDTH / 2 + sprite.getWidth() / 2, 16);;
+        position = new Vector2((SpaceShooter.GAME_WIDTH / 2) - (sprite.getWidth() / 2), sprite.getHeight());;
     }
 
     @Override
-    public void update() {}
+    public void update(float delta) {}
 
     @Override
-    public void render() {
+    public void render(float delta) {
         this.game.batch.draw(sprite, position.x, position.y, sprite.getWidth(), sprite.getHeight());
     }
+
+    @Override
+    public void renderShape(float delta) {}
 
     @Override
     public void dispose() {}

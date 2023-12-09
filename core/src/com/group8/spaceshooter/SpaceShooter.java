@@ -45,35 +45,46 @@ public class SpaceShooter extends SpaceShooterGame implements ApplicationListene
 		this.setScreen(new GameScreen(this));
 	}
 
+	// All the updates will happen here
+	private void update() {
+		// Update the camera
+		camera.update();
+
+		// Update stars
+		starsBackground.update();
+
+		// Update the current screen
+		this.screen.update(Gdx.graphics.getDeltaTime());
+	}
+
 	@Override
 	public void render() {
 		// Clear the background to black
 		ScreenUtils.clear(0, 0, 0, 1);
 
-		// Update the camera
-		camera.update();
+		// Call the update function
+		this.update();
 
-		// Update the current screen
-		this.screen.update(Gdx.graphics.getDeltaTime());
-
-		// Update stars
-		starsBackground.update();
-
+		// All render will happen here
 		batch.setProjectionMatrix(camera.combined); // Set the Sprite renderer align to camera
-		shapeRenderer.setProjectionMatrix(camera.combined); // Set the Shape renderer align to camera
-		shapeRenderer.setColor(Color.WHITE); // Set the Shape renderer Color
-
 		batch.begin(); // Begin sprite renderer
-		shapeRenderer.begin(ShapeType.Filled); // Begin Shape renderer
-
-		// Render stars
-		starsBackground.render();
 
 		// Render the current screen
 		super.render();
 
-		shapeRenderer.end(); // End Shape renderer
 		batch.end(); // End Sprite renderer
+
+		shapeRenderer.setProjectionMatrix(camera.combined); // Set the shape renderer align to camera
+		shapeRenderer.begin(ShapeType.Filled); // Begin shape renderer
+		shapeRenderer.setColor(Color.WHITE); // Set shape renderer color to white
+
+		// Render the background
+		starsBackground.render();
+
+		// Render the current screen
+		this.screen.renderShape(Gdx.graphics.getDeltaTime());
+
+		shapeRenderer.end(); // End shape renderer
 	}
 
 	@Override

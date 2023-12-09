@@ -12,11 +12,14 @@ public class Enemy implements SpaceShooterObject {
 
     // Update stuff for the enemy
     @Override
-    public void update() {}
+    public void update(float delta) {}
 
     // Render enemy stuff
     @Override
-    public void render() {}
+    public void render(float delta) {}
+
+    @Override
+    public void renderShape(float delta) {}
 
     // Dispose enemy assets
     @Override

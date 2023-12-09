@@ -33,6 +33,9 @@ public class MenuScreen implements SpaceShooterScreen {
     }
 
     @Override
+    public void renderShape(float delta) {}
+
+    @Override
     public void dispose() {}
 
     @Override
