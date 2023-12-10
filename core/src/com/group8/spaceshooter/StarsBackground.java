@@ -1,6 +1,8 @@
-package com.group8.spaceshooter.lib;
+package com.group8.spaceshooter;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -28,19 +30,25 @@ public class StarsBackground {
         if (TimeUtils.millis() - lastStar > 20) spawnStar();
 
         // Update the stars, move it down and remove it if it goes off the screen
-        for (Iterator<Rectangle> iterator = stars.iterator(); iterator.hasNext(); ) {
-            Rectangle star = iterator.next();
+        for (int i = 0; i < stars.size(); i++) {
+            Rectangle star = stars.get(i); // Get the star object in the index
 
             star.y -= (star.getHeight() * 120) * Gdx.graphics.getDeltaTime(); // Move the star down
-            if (star.y < 0) iterator.remove(); // If the star is below & is offscreen remove it to not consume too much memory
+            if (star.y < 0) stars.remove(star); // If the star is below & is offscreen remove it to not consume too much memory
+
         }
     }
 
     public void render() {
+        this.game.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled); // Begin shape renderer
+        this.game.shapeRenderer.setColor(Color.WHITE); // Set shape renderer color to white
+
         // Render the star using the ShapeRender libgdx gives us
         for (Rectangle star : stars) {
             this.game.shapeRenderer.rect(star.x, star.y, star.width, star.height);
         }
+
+        this.game.shapeRenderer.end(); // End shape renderer
     }
 
     // The Function to spawn the star
@@ -59,5 +67,4 @@ public class StarsBackground {
         // Keep track of the time the last star has spawned
         lastStar = TimeUtils.millis();
     }
-
 }

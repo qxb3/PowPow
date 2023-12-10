@@ -1,6 +1,7 @@
 package com.group8.spaceshooter;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -8,11 +9,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.group8.spaceshooter.lib.SpaceShooterGame;
-import com.group8.spaceshooter.lib.StarsBackground;
 import com.group8.spaceshooter.screens.GameScreen;
 
-public class SpaceShooter extends SpaceShooterGame implements ApplicationListener {
+public class SpaceShooter extends Game implements ApplicationListener {
 	// Game Dimension
 	public static final float GAME_WIDTH = 400;
 	public static final float GAME_HEIGHT = 600;
@@ -52,9 +51,6 @@ public class SpaceShooter extends SpaceShooterGame implements ApplicationListene
 
 		// Update stars
 		starsBackground.update();
-
-		// Update the current screen
-		this.screen.update(Gdx.graphics.getDeltaTime());
 	}
 
 	@Override
@@ -65,26 +61,15 @@ public class SpaceShooter extends SpaceShooterGame implements ApplicationListene
 		// Call the update function
 		this.update();
 
-		// All render will happen here
-		batch.setProjectionMatrix(camera.combined); // Set the Sprite renderer align to camera
-		batch.begin(); // Begin sprite renderer
-
-		// Render the current screen
-		super.render();
-
-		batch.end(); // End Sprite renderer
-
-		shapeRenderer.setProjectionMatrix(camera.combined); // Set the shape renderer align to camera
-		shapeRenderer.begin(ShapeType.Filled); // Begin shape renderer
-		shapeRenderer.setColor(Color.WHITE); // Set shape renderer color to white
-
-		// Render the background
+		// Render stars
 		starsBackground.render();
 
-		// Render the current screen
-		this.screen.renderShape(Gdx.graphics.getDeltaTime());
+		// All render will happen here
+		batch.setProjectionMatrix(camera.combined); // Set the Sprite renderer align to camera
+		shapeRenderer.setProjectionMatrix(camera.combined); // Set the shape renderer align to camera
 
-		shapeRenderer.end(); // End shape renderer
+		// Render the current screen
+		this.screen.render(Gdx.graphics.getDeltaTime());
 	}
 
 	@Override

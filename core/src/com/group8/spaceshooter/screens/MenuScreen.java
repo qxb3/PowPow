@@ -1,10 +1,10 @@
 package com.group8.spaceshooter.screens;
 
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.group8.spaceshooter.SpaceShooter;
-import com.group8.spaceshooter.lib.SpaceShooterScreen;
 
-public class MenuScreen implements SpaceShooterScreen {
+public class MenuScreen implements Screen {
     private final SpaceShooter game;
 
     // GameScreen camera
@@ -18,11 +18,10 @@ public class MenuScreen implements SpaceShooterScreen {
         camera.setToOrtho(false, (int) SpaceShooter.GAME_WIDTH, (int) SpaceShooter.GAME_HEIGHT);
     }
 
-    @Override
-    public void update(float delta) {}
+    private void update(float delta) {}
 
-    @Override
     public void render(float delta) {
+        this.update(delta);
         // Update the camera
         camera.update();
 
@@ -31,9 +30,6 @@ public class MenuScreen implements SpaceShooterScreen {
         this.game.batch.begin();
         this.game.batch.end();
     }
-
-    @Override
-    public void renderShape(float delta) {}
 
     @Override
     public void dispose() {}
@@ -52,5 +48,4 @@ public class MenuScreen implements SpaceShooterScreen {
 
     @Override
     public void hide() {}
-
 }

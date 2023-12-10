@@ -1,4 +1,4 @@
-package com.group8.spaceshooter.lib;
+package com.group8.spaceshooter;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
