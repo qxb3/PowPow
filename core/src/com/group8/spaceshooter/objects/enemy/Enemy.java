@@ -35,7 +35,7 @@ public class Enemy {
     }
 
     // Render enemy
-    public void render(float delta) {
+    public void render() {
         this.game.batch.draw(
                 this.animation.getKeyFrame(animationTime, true),
                 this.position.x, this.position.y,

@@ -58,7 +58,7 @@ public class Player {
         }
     }
 
-    public void render(float delta) {
+    public void render() {
         // Render the player
         this.game.batch.draw(this.sprite, this.position.x, this.position.y, this.sprite.getWidth(), this.sprite.getHeight());
 
