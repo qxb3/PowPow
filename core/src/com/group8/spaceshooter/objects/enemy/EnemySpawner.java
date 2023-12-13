@@ -40,14 +40,24 @@ public class EnemySpawner {
     private void spawnEnemies() {
         EnemyTypes type;
 
-        int random = MathUtils.random(0, 1);
-        if (random == 1) type = EnemyTypes.BACTERIA;
-        else if  (random == 2) type = EnemyTypes.SHELL;
+        int random = MathUtils.random(0, 2);
+        if (random == 0) type = EnemyTypes.BACTERIA;
+        else if  (random == 1) type = EnemyTypes.SHELL;
         else type = EnemyTypes.CANDY;
 
         Enemy enemy = new Enemy(type, this.game);
 
         enemies.add(enemy);
         lastEnemy = TimeUtils.millis();
+    }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
+    }
+
+    public void dispose() {
+        for (Enemy enemy : enemies) {
+            enemy.dispose();
+        }
     }
 }

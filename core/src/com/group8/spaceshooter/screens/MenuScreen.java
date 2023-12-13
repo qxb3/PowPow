@@ -7,26 +7,15 @@ import com.group8.spaceshooter.SpaceShooter;
 public class MenuScreen implements Screen {
     private final SpaceShooter game;
 
-    // GameScreen camera
-    private static OrthographicCamera camera;
-
     public MenuScreen(SpaceShooter game) {
         this.game = game;
-
-        // Initialize camera & Set the width & height to the game dimensions
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, (int) SpaceShooter.GAME_WIDTH, (int) SpaceShooter.GAME_HEIGHT);
     }
 
     private void update(float delta) {}
 
     public void render(float delta) {
         this.update(delta);
-        // Update the camera
-        camera.update();
 
-        // Render stuff on MenuScreen
-        this.game.batch.setProjectionMatrix(camera.combined);
         this.game.batch.begin();
         this.game.batch.end();
     }

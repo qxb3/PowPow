@@ -1,15 +1,12 @@
 package com.group8.spaceshooter;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.group8.spaceshooter.SpaceShooter;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class StarsBackground {
     private final SpaceShooter game;
@@ -41,7 +38,7 @@ public class StarsBackground {
 
     public void render() {
         this.game.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled); // Begin shape renderer
-        this.game.shapeRenderer.setColor(Color.WHITE); // Set shape renderer color to white
+        this.game.shapeRenderer.setColor(1, 1, 1, 1);
 
         // Render the star using the ShapeRender libgdx gives us
         for (Rectangle star : stars) {
