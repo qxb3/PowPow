@@ -12,10 +12,10 @@ public class PlayerBullet {
     // The bullet speed
     private static final float BULLET_SPEED = 800f;
 
-    private final Vector2 position; // Bullet position
-    private final Sprite sprite; // Bullet sprite
+    public Vector2 position; // Bullet position
+    public Sprite sprite; // Bullet sprite
 
-    private final Rectangle rectangle; // Rectangle for the player, will be used for the collision
+    public Rectangle rectangle; // Rectangle for the player, will be used for the collision
 
     public  PlayerBullet(Vector2 position, SpaceShooter game) {
         this.game = game;
@@ -41,15 +41,6 @@ public class PlayerBullet {
     // Render the bullet
     public void render() {
         this.game.batch.draw(sprite, position.x, position.y, sprite.getWidth(), sprite.getHeight());
-    }
-
-    // Getter for the bullet position
-    public Vector2 getPosition() {
-        return this.position;
-    }
-
-    public Rectangle getRectangle() {
-        return this.rectangle;
     }
 
     public void dispose() {

@@ -3,18 +3,18 @@ package com.group8.spaceshooter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.group8.spaceshooter.screens.GameScreen;
+import com.group8.spaceshooter.screens.MenuScreen;
 
 public class SpaceShooter extends Game implements ApplicationListener {
 	// Game Dimension
-	public static final float GAME_WIDTH = 400;
-	public static final float GAME_HEIGHT = 600;
+	public static final float GAME_WIDTH = 400f;
+	public static final float GAME_HEIGHT = 600f;
 
 	// Our Renderers that will be used throughout the game
 	public SpriteBatch batch;
@@ -23,7 +23,8 @@ public class SpaceShooter extends Game implements ApplicationListener {
 	// The camera that will be used throughout the game
 	public OrthographicCamera camera;
 
-	private static StarsBackground starsBackground;
+	// The stars background on the back
+	private StarsBackground starsBackground;
 
 	@Override
 	public void create() {
@@ -38,10 +39,18 @@ public class SpaceShooter extends Game implements ApplicationListener {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, (int) SpaceShooter.GAME_WIDTH, (int) SpaceShooter.GAME_HEIGHT);
 
+		// Initialize Background Stars
 		starsBackground = new StarsBackground(this);
 
+		// Create the Background Music
+		Sound backgroundMusic = Gdx.audio.newSound(Gdx.files.internal("sfx/bg.mp3"));
+
+		long id = backgroundMusic.play(); // Play the background music
+		backgroundMusic.setVolume(id, 0.2f); // Set the volume
+		backgroundMusic.setLooping(id, true); // Make it loop
+
 		// Set the screen to the MenuScreen
-		this.setScreen(new GameScreen(this));
+		this.setScreen(new MenuScreen(this));
 	}
 
 	// All the updates will happen here

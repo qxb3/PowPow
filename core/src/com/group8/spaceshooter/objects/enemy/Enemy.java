@@ -15,27 +15,27 @@ public class Enemy {
     // Enemy speed the enemy is travelling down
     private static final float ENEMY_SPEED = 80;
 
-    private Texture texture; // Animation texture
-    private final Animation<TextureRegion> animation; // Enemy Animation
-    private float animationTime; // For tracking the animation time
+    public Texture texture; // Animation texture
+    public Animation<TextureRegion> animation; // Enemy Animation
+    public float animationTime; // For tracking the animation time
 
-    private final Vector2 position; // Enemy position
-    private int health; // Enemy HP
-    private final Rectangle rectangle; // Rectangle for the enemy, will be used for the collision
+    public Vector2 position; // Enemy position
+    public int health; // Enemy HP
+    public Rectangle rectangle; // Rectangle for the enemy, will be used for the collision
 
     public Enemy(EnemyTypes enemyType, SpaceShooter game) {
         this.game = game;
 
         // Initialize animation variables
-        this.texture = new Texture(enemyType.getFilename());
-        this.animation = Utils.createAnimation(this.texture, enemyType.getAnimationCols(), enemyType.getAnimationRows(), 0.1f);
+        this.texture = new Texture(enemyType.filename);
+        this.animation = Utils.createAnimation(this.texture, enemyType.animationCols, enemyType.animationRows, 0.1f);
         this.animationTime = 0f;
 
         // Set the x position to random, and the y to the top of the screen
         this.position = new Vector2(MathUtils.random(0, SpaceShooter.GAME_WIDTH - 32), SpaceShooter.GAME_HEIGHT + 32);
 
         // Set the health based on the enemy type
-        this.health = enemyType.getHealth();
+        this.health = enemyType.health;
 
         // Initialize the rectangle
         this.rectangle = new Rectangle();
@@ -64,16 +64,6 @@ public class Enemy {
         this.health -= 1;
 
         return this.health <= 0;
-    }
-
-    // Getter for position
-    public Vector2 getPosition() {
-        return this.position;
-    }
-
-    // Getter for rectangle
-    public Rectangle getRectangle() {
-        return this.rectangle;
     }
 
     // Dispose enemy assets
