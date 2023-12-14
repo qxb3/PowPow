@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.group8.spaceshooter.screens.GameScreen;
 import com.group8.spaceshooter.screens.MenuScreen;
 
 public class SpaceShooter extends Game implements ApplicationListener {

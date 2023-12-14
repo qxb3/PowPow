@@ -34,7 +34,7 @@ public class PlayerBullet {
 
     // Update the bullet position
     public void update(float delta) {
-        this.position.y +=  BULLET_SPEED * delta; // Move the bullet up
+        this.position.y += BULLET_SPEED * delta; // Move the bullet up
         this.rectangle.setPosition(this.position); // Also update the rectangle
     }
 

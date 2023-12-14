@@ -12,9 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.group8.spaceshooter.SpaceShooter;
 import com.group8.spaceshooter.Utils;
-import org.w3c.dom.css.Rect;
 
-import java.nio.Buffer;
 import java.util.ArrayList;
 
 public class Player {
@@ -58,7 +56,7 @@ public class Player {
         this.rectangle.setSize(this.sprite.getWidth(), this.sprite.getHeight()); // Set the size to the sprite size
 
         // Set the player hp to only 3
-        this.health = 3;
+        this.health = 5;
 
         // Initialize bullets variables
         this.bullets = new ArrayList<>();
@@ -72,7 +70,7 @@ public class Player {
     public void update(float delta) {
         this.boosterTime += delta; // Increase the booster time as the game goes on
 
-        // Makes sure the player is in the world boundaries
+        // player iMakes sure the s in the world boundaries
         if (this.position.x < 0) this.position.x = 0;
         if (this.position.x > SpaceShooter.GAME_WIDTH - this.sprite.getWidth())
             this.position.x = SpaceShooter.GAME_WIDTH - this.sprite.getWidth();
@@ -137,7 +135,7 @@ public class Player {
             bullets.add(bullet); // Add the bullet into array
             lastBullet = TimeUtils.millis(); // Keep track of the bullet time
 
-            laserSound.play(); // Playe the laser sfx
+            laserSound.play(); // Player the laser sfx
         }
     }
 

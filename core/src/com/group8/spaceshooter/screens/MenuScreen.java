@@ -36,6 +36,8 @@ public class MenuScreen implements Screen {
         // Make a table to align ui elements easily
         Table table = new Table();
         table.setFillParent(true);
+
+        // Set table to Game width to game height
         table.setBounds(0, 0, SpaceShooter.GAME_WIDTH, SpaceShooter.GAME_HEIGHT);
 
         // Make label style for title
@@ -120,13 +122,13 @@ public class MenuScreen implements Screen {
     }
 
     private void update(float delta) {
-        stage.act();
+        stage.act(); // Update stage
     }
 
     public void render(float delta) {
         this.update(delta);
 
-        stage.draw();
+        stage.draw(); // Render draw
     }
 
     @Override
