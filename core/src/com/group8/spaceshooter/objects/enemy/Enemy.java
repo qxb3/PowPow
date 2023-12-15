@@ -12,9 +12,6 @@ import com.group8.spaceshooter.Utils;
 public class Enemy {
     private final SpaceShooter game;
 
-    // Enemy speed the enemy is travelling down
-    private static final float ENEMY_SPEED = 80;
-
     public Texture texture; // Animation texture
     public Animation<TextureRegion> animation; // Enemy Animation
     public float animationTime; // For tracking the animation time
@@ -46,7 +43,6 @@ public class Enemy {
     public void update(float delta) {
         this.animationTime += delta; // Update the animation time
 
-        this.position.y -= ENEMY_SPEED * delta; // Move enemy down
         this.rectangle.setPosition(this.position); // Also update the rectangle
     }
 

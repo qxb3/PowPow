@@ -9,6 +9,11 @@ import java.util.ArrayList;
 public class EnemySpawner {
     private final SpaceShooter game;
 
+    private static float ENEMY_SPEED = 80; // The speed of the enemy moving down
+    private static final float ENEMY_SPEED_SCALE = 2; // The rate the enemy speed will go over time to increase difficulty
+    private static float SPAWN_RATE = 5000; // The spawn rate
+    private static final float SPAWN_RATE_SCALE = 1; // The spawn rate scale
+
     public ArrayList<Enemy> enemies; // Enemies array
     private long lastEnemy; // Keep track of the time of last spawned enemy
 
@@ -21,12 +26,17 @@ public class EnemySpawner {
     }
 
     public void update(float delta) {
-        // If its past 5000ms (5seconds) spawn another enemy
-        if (TimeUtils.millis() - lastEnemy > 5000) spawnEnemies();
+        ENEMY_SPEED += ENEMY_SPEED_SCALE * delta; // Increase the enemy speed over time
+        SPAWN_RATE -= SPAWN_RATE_SCALE * delta; // Shorten the spawn time over time
+
+        // If its past the spawn rate time, spawn another enemy
+        if (TimeUtils.millis() - lastEnemy > SPAWN_RATE) spawnEnemies();
 
         // Update the enemy
         for (int i = 0; i < enemies.size(); i++) {
             Enemy enemy = enemies.get(i);
+
+            enemy.position.y -= ENEMY_SPEED * delta; // Move enemy down
 
             enemy.update(delta);
 
