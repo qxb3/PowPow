@@ -32,7 +32,6 @@ public class StarsBackground {
 
             star.y -= (star.getHeight() * 120) * Gdx.graphics.getDeltaTime(); // Move the star down
             if (star.y < 0) stars.remove(star); // If the star is below & is offscreen remove it to not consume too much memory
-
         }
     }
 
